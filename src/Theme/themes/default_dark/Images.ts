@@ -7,5 +7,5 @@ export default function () {
     logo: {
       uri: 'https://thecodingmachine.github.io/react-native-rnchat/img/TOM-small.png',
     },
-  }
+  };
 }

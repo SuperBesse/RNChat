@@ -1,8 +1,8 @@
 /**
  * This file contains all application's style relative to fonts
  */
-import { StyleSheet } from 'react-native'
-import { ThemeVariables } from './theme'
+import { StyleSheet } from 'react-native';
+import { ThemeVariables } from './theme';
 
 export default function ({ FontSize, Colors }: ThemeVariables) {
   return StyleSheet.create({
@@ -45,5 +45,5 @@ export default function ({ FontSize, Colors }: ThemeVariables) {
     textRight: {
       textAlign: 'right',
     },
-  })
+  });
 }

@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { ThemeVariables } from './theme'
+import { StyleSheet } from 'react-native';
+import { ThemeVariables } from './theme';
 
 export default function ({}: ThemeVariables) {
   return StyleSheet.create({
@@ -101,5 +101,5 @@ export default function ({}: ThemeVariables) {
     rotate90Inverse: {
       transform: [{ rotate: '-90deg' }],
     },
-  })
+  });
 }

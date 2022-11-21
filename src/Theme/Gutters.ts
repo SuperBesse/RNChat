@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { ThemeVariables } from './theme'
+import { StyleSheet } from 'react-native';
+import { ThemeVariables } from './theme';
 
 /**
  * Generate Styles depending on MetricsSizes vars availabled at ./Theme/Variables
@@ -20,23 +20,23 @@ type Margins =
   | 'RMargin'
   | 'LMargin'
   | 'VMargin'
-  | 'HMargin'
+  | 'HMargin';
 type Paddings =
   | 'BPadding'
   | 'TPadding'
   | 'RPadding'
   | 'LPadding'
   | 'VPadding'
-  | 'HPadding'
+  | 'HPadding';
 
-type MarginKeys = `${keyof ThemeVariables['MetricsSizes']}${Margins}`
-type PaddingKeys = `${keyof ThemeVariables['MetricsSizes']}${Paddings}`
+type MarginKeys = `${keyof ThemeVariables['MetricsSizes']}${Margins}`;
+type PaddingKeys = `${keyof ThemeVariables['MetricsSizes']}${Paddings}`;
 
 type Gutters = {
   [key in MarginKeys | PaddingKeys]: {
-    [k in string]: number
-  }
-}
+    [k in string]: number;
+  };
+};
 
 export default function ({ MetricsSizes }: ThemeVariables): Gutters {
   return StyleSheet.create(
@@ -84,5 +84,5 @@ export default function ({ MetricsSizes }: ThemeVariables): Gutters {
       }),
       {},
     ) as Gutters,
-  )
+  );
 }

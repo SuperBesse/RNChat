@@ -1,5 +1,5 @@
 export default {
   placeholder: {
-    message: 'enter message',
+    message: 'entrez un message',
   },
 };

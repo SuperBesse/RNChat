@@ -1,6 +1,10 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import messageState, { MessageReducer } from './AddMessage';
 
-export type AppState = {}
-const state = combineReducers({ })
+export interface AppState {
+  messageState: MessageReducer;
+}
 
-export default state
+const state = combineReducers({ messageState });
+
+export default state;

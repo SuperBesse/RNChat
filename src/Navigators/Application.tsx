@@ -1,17 +1,17 @@
-import React from 'react'
-import { SafeAreaView, StatusBar } from 'react-native'
-import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native'
-import { StartupContainer, ExampleContainer } from '@/Containers'
-import { useTheme } from '@/Hooks'
-import { navigationRef } from './utils'
+import React from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { StartupContainer, ChatContainer } from '@/Containers';
+import { useTheme } from '@/Hooks';
+import { navigationRef } from './utils';
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 // @refresh reset
 const ApplicationNavigator = () => {
-  const { Layout, darkMode, NavigationTheme } = useTheme()
-  const { colors } = NavigationTheme
+  const { Layout, darkMode, NavigationTheme } = useTheme();
+  const { colors } = NavigationTheme;
 
   return (
     <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
@@ -21,7 +21,7 @@ const ApplicationNavigator = () => {
           <Stack.Screen name="Startup" component={StartupContainer} />
           <Stack.Screen
             name="Main"
-            component={ExampleContainer}
+            component={ChatContainer}
             options={{
               animationEnabled: false,
             }}
@@ -29,7 +29,7 @@ const ApplicationNavigator = () => {
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default ApplicationNavigator
+export default ApplicationNavigator;
