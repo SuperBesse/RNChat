@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageInput should rencer correctly 1`] = `
+<View
+  style={
+    Object {
+      "justifyContent": "center",
+    }
+  }
+>
+  <TextInput
+    editable={true}
+    enablesReturnKeyAutomatically={true}
+    onChangeText={[Function]}
+    onEndEditing={[Function]}
+    placeholder="placeholder.message"
+    style={
+      Object {
+        "alignSelf": "center",
+        "borderColor": "gray",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "marginBottom": 8,
+        "padding": 10,
+        "width": "80%",
+      }
+    }
+    value=""
+  />
+</View>
+`;
