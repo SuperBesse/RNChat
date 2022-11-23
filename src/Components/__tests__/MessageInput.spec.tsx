@@ -30,7 +30,7 @@ describe('MessageInput', () => {
     render(<MessageInput />).toJSON();
 
     const addMessagePayload = {
-      payload: { message: '' },
+      payload: '',
       type: 'SEND_MESSAGE_START',
     };
     act(() => {

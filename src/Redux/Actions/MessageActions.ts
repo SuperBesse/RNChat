@@ -5,6 +5,6 @@ export const SEND_MESSAGE_FAILURE = 'SEND_MESSAGE_FAILURE';
 export function sendMessage(message: String) {
   return {
     type: SEND_MESSAGE_START,
-    payload: { message },
+    payload: message,
   };
 }

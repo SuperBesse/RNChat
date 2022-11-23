@@ -9,7 +9,6 @@ import { receivedNewMessage } from '@/Redux/Actions/MessagesActions';
 import { Message } from '@/Types/Message';
 
 export default function* addMessageSaga() {
-  console.log('addMessageSaga');
   yield takeEvery(SEND_MESSAGE_START, addMessage);
 }
 
@@ -20,8 +19,6 @@ const delay = () => new Promise(resolve => setTimeout(resolve, randomTime()));
 const randomError = (): Boolean => Math.floor(Math.random() * 100) < 30;
 
 function* addMessage(action: ActionType<string>) {
-  console.log('addMessage');
-  console.log(action);
   yield call(delay);
   try {
     const error: Boolean = yield call(randomError);
@@ -30,9 +27,9 @@ function* addMessage(action: ActionType<string>) {
     }
     console.log('SEND_MESSAGE_SUCCESS');
     const finalMessage = {
-      ...action.payload,
+      content: action.payload,
       date: Date.now(),
-    };
+    } as Message;
     yield put({
       type: SEND_MESSAGE_SUCCESS,
       payload: finalMessage,

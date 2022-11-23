@@ -1,19 +1,17 @@
 import React from 'react';
-import { FlatList, ViewProps, StyleProp, ListRenderItem } from 'react-native';
+import { FlatList, ViewStyle, ListRenderItem } from 'react-native';
 import Message from './Message';
 import { Message as IMessage } from '@/Types/Message';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/Redux/Reducers';
 
 type Props = {
-  style?: StyleProp<ViewProps>;
+  style?: ViewStyle;
 };
 
 const MessageList = ({ style }: Props) => {
-  console.log('MessageList');
-
   const renderItem: ListRenderItem<IMessage> = ({ item }) => (
-    <Message message={item.message} />
+    <Message message={item} />
   );
 
   const messages = useSelector(
@@ -26,6 +24,7 @@ const MessageList = ({ style }: Props) => {
       data={messages}
       renderItem={renderItem}
       keyExtractor={(item: IMessage) => item.date.toString()}
+      inverted
     />
   );
 };

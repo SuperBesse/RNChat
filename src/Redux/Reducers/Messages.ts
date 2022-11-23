@@ -15,7 +15,7 @@ export default function (state = initialState, action: ActionType<Message>) {
     case SAVE_NEW_MESSAGE: {
       return {
         ...state,
-        messages: [...state.messages, action.payload],
+        messages: [action.payload, ...state.messages],
       };
     }
     default: {

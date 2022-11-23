@@ -1,4 +1,4 @@
 export type Message = {
-  message: string;
+  content: string;
   date: number;
 };
