@@ -3,12 +3,9 @@ import {
   SEND_MESSAGE_SUCCESS,
   SEND_MESSAGE_FAILURE,
 } from '@/Redux/Actions/MessageActions';
-import type { ActionType } from '../types';
+import type { ActionType } from '@/Types/Actions';
+import type { Message } from '@/Types/Message';
 
-type Message = {
-  message: string;
-  date: Date;
-};
 export type MessageReducer = {
   message?: Message;
   isLoading: boolean;

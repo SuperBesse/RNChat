@@ -1,9 +1,23 @@
 import React from 'react';
 
-import { MessageInput } from '@/Components';
+import { MessageInput, MessageList } from '@/Components';
+import { StyleSheet, View } from 'react-native';
 
-const ExampleContainer = () => {
-  return <MessageInput />;
+const ChatContainer = () => {
+  return (
+    <View style={styles.container}>
+      <MessageList style={styles.container} />
+      <MessageInput />
+    </View>
+  );
 };
 
-export default ExampleContainer;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+export default ChatContainer;

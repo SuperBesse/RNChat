@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageInput should rencer correctly 1`] = `
+exports[`MessageInput should render correctly 1`] = `
 <View
   style={
     Object {

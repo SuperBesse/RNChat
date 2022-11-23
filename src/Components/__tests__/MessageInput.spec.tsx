@@ -5,7 +5,7 @@ import * as redux from 'react-redux';
 import { TextInput } from 'react-native';
 import { put, takeEvery } from 'redux-saga/effects';
 import addMessageSaga, { addMessage } from '@/Redux/Sagas/AddMessage';
-import { expectSaga } from 'redux-saga-test-plan';
+//import { expectSaga } from 'redux-saga-test-plan';
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
@@ -21,7 +21,7 @@ describe('MessageInput', () => {
   beforeAll(() => {
     generator = addMessageSaga();
   });
-  it('should rencer correctly', () => {
+  it('should render correctly', () => {
     const tree = render(<MessageInput />).toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,10 +1,12 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
-import type { ActionType } from '../types';
+import type { ActionType } from '@/Types/Actions';
 import {
   SEND_MESSAGE_START,
   SEND_MESSAGE_SUCCESS,
   SEND_MESSAGE_FAILURE,
 } from '@/Redux/Actions/MessageActions';
+import { receivedNewMessage } from '@/Redux/Actions/MessagesActions';
+import { Message } from '@/Types/Message';
 
 export default function* addMessageSaga() {
   console.log('addMessageSaga');
@@ -27,13 +29,16 @@ function* addMessage(action: ActionType<string>) {
       throw new Error('fake error');
     }
     console.log('SEND_MESSAGE_SUCCESS');
+    const finalMessage = {
+      ...action.payload,
+      date: Date.now(),
+    };
     yield put({
       type: SEND_MESSAGE_SUCCESS,
-      payload: { message: String, date: Date.now() },
+      payload: finalMessage,
     });
+    yield put(receivedNewMessage(finalMessage));
   } catch (err) {
-    console.log(err);
-    console.log('SEND_MESSAGE_FAILURE');
     yield put({ type: SEND_MESSAGE_FAILURE, payload: {} });
   }
 }
