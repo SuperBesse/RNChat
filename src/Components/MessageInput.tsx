@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TextInput, StyleSheet, ActivityIndicator, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ type Props = {};
 
 const MessageInput = ({}: Props) => {
   const [text, setText] = React.useState<string>('');
-
+  const textInputRef = useRef<TextInput>(null);
   //listen text changing but rerender only if text has changed
   const onChangeText = (value: string) => {
     if (value !== text) {
@@ -28,6 +28,12 @@ const MessageInput = ({}: Props) => {
     return isLoading;
   });
 
+  useEffect(() => {
+    if (!isSending) {
+      textInputRef.current.focus();
+    }
+  }, [isSending]);
+
   const sendNewMessage = () => {
     dispatch(sendMessage(text));
   };
@@ -36,6 +42,7 @@ const MessageInput = ({}: Props) => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
+        ref={textInputRef}
         onChangeText={onChangeText}
         value={text}
         placeholder={t('placeholder.message')}
@@ -43,14 +50,16 @@ const MessageInput = ({}: Props) => {
         editable={!isSending}
         enablesReturnKeyAutomatically
       />
-      {isSending && <ActivityIndicator size="small" color="#0000ff" />}
+      {isSending && <ActivityIndicator size="small" color="#grey" />}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     justifyContent: 'center',
+    backgroundColor: 'white',
   },
   input: {
     alignSelf: 'center',
@@ -59,7 +68,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    marginBottom: 8,
+    marginVertical: 8,
+    marginRight: 8,
   },
 });
 

@@ -24,6 +24,7 @@ const MessageList = ({ style }: Props) => {
       data={messages}
       renderItem={renderItem}
       keyExtractor={(item: IMessage) => item.date.toString()}
+      persistentScrollbar
       inverted
     />
   );

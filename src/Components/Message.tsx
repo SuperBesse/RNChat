@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import type { Message as IMEssage } from '@/Types/Message';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons/faCircleExclamation';
 
 type Props = {
   message: IMEssage;
@@ -17,10 +19,18 @@ const Message = ({ message }: Props) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.dateContainer}>
+        <Text style={styles.date}>{formattedDate(message.date)}</Text>
+        {message.notSent && (
+          <FontAwesomeIcon
+            style={styles.errorIcon}
+            icon={faCircleExclamation}
+          />
+        )}
+      </View>
       <View style={styles.messageContainer}>
         <Text style={styles.content}>{message.content}</Text>
       </View>
-      <Text style={styles.date}>{formattedDate(message.date)}</Text>
     </View>
   );
 };
@@ -29,10 +39,18 @@ export default Message;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
     paddingHorizontal: 20,
-    marginVertical: 10,
+    marginVertical: 5,
+  },
+  dateContainer: {
+    marginRight: 6,
+  },
+  errorIcon: {
+    color: '#FF0000EE',
+    alignSelf: 'flex-end',
   },
   messageContainer: {
     borderTopLeftRadius: 12,
@@ -42,12 +60,12 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     maxWidth: '60%',
     backgroundColor: '#4b9cba',
-    marginBottom: 4,
   },
   content: {
     fontSize: 14,
   },
   date: {
+    marginVertical: 4,
     fontSize: 10,
   },
 });

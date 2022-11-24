@@ -1,8 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react-native';
 import Message from '../Message';
-import { store } from '@/Store';
-import { receivedNewMessage } from '@/Redux/Actions/MessagesActions';
 
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({
