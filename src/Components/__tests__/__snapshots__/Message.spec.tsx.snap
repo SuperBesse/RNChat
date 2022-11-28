@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageInput should render correctly 1`] = `
+exports[`Message should render correctly 1`] = `
 <View
   style={
     Object {
-      "alignItems": "flex-end",
-      "flexDirection": "column",
-      "marginVertical": 10,
+      "alignItems": "flex-start",
+      "flexDirection": "row",
+      "justifyContent": "flex-end",
+      "marginVertical": 5,
       "paddingHorizontal": 20,
     }
   }
@@ -14,11 +15,28 @@ exports[`MessageInput should render correctly 1`] = `
   <View
     style={
       Object {
+        "marginRight": 6,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 10,
+          "marginVertical": 4,
+        }
+      }
+    >
+      13:51
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
         "backgroundColor": "#4b9cba",
         "borderBottomLeftRadius": 12,
         "borderBottomRightRadius": 12,
         "borderTopLeftRadius": 12,
-        "marginBottom": 4,
         "maxWidth": "60%",
         "paddingHorizontal": 10,
         "paddingVertical": 12,
@@ -35,14 +53,5 @@ exports[`MessageInput should render correctly 1`] = `
       test
     </Text>
   </View>
-  <Text
-    style={
-      Object {
-        "fontSize": 10,
-      }
-    }
-  >
-    00:02
-  </Text>
 </View>
 `;

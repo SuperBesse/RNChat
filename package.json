@@ -85,6 +85,9 @@
     "testEnvironment": "jsdom",
     "transformIgnorePatterns": [
       "/node_modules/(?!@react-native|react-native)"
-    ]
+    ],
+    "coveragePathIgnorePatterns": ["(tests/.*.mock).(jsx?|tsx?)$"],
+    "collectCoverage": true,
+    "collectCoverageFrom": ["./src/**"]
   }
 }

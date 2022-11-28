@@ -8,15 +8,27 @@ jest.mock('react-redux', () => ({
   useDispatch: () => mockDispatch,
 }));
 
-const message = { content: 'test', date: Date.now() };
+beforeEach(() => {
+  jest.spyOn(Date.prototype, 'getDay').mockReturnValue(2);
+  jest
+    .spyOn(Date.prototype, 'toISOString')
+    .mockReturnValue('2022-01-01T00:00:00.000Z');
+  jest.spyOn(Date, 'now').mockImplementation(() => 1487076708000);
+});
 
-describe('MessageInput', () => {
+afterEach(() => {
+  jest.restoreAllMocks();
+});
+
+const message = { content: 'test', date: 1487076708000 };
+
+describe('Message', () => {
   it('should render correctly', () => {
     const tree = render(<Message message={message} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('should display a text from the message content', async () => {
+  it('should render a text in the message component', async () => {
     render(<Message message={message} />).toJSON();
     const text = screen.getByText('test');
     expect(text).not.toBeNull();
