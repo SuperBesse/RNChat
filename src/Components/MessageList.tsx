@@ -10,6 +10,13 @@ type Props = {
 };
 
 const MessageList = ({ style }: Props) => {
+  const generateFakeMessages = (count: number) => {
+    let dateKey = 1487076708000;
+    return Array(count).fill({
+      message: 'AHAHAHAHHAA',
+      date: dateKey + 5000,
+    });
+  };
   const renderItem: ListRenderItem<IMessage> = ({ item }) => (
     <Message message={item} />
   );
@@ -20,6 +27,7 @@ const MessageList = ({ style }: Props) => {
 
   return (
     <FlatList
+      style={{ flex: 1 }}
       contentContainerStyle={style}
       data={messages}
       renderItem={renderItem}

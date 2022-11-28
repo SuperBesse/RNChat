@@ -6,7 +6,7 @@ import { StyleSheet, View } from 'react-native';
 const ChatContainer = () => {
   return (
     <View style={styles.container}>
-      <MessageList style={styles.container} />
+      <MessageList />
       <MessageInput />
     </View>
   );
@@ -15,7 +15,6 @@ const ChatContainer = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'gray',
   },
 });
 
