@@ -39,10 +39,11 @@ export default Message;
 
 const styles = StyleSheet.create({
   container: {
+    flexGrow: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
-    paddingHorizontal: 20,
+    paddingHorizontal: 8,
     marginVertical: 5,
   },
   dateContainer: {
