@@ -8,7 +8,7 @@ import { addMessage, receivedMessage } from '@/Redux/Sagas';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: [],
+  whitelist: ['messagesState'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
