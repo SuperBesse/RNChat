@@ -4,6 +4,7 @@ import Message from './Message';
 import { Message as IMessage } from '@/Types/Message';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/Redux/Reducers';
+import { LoremIpsum } from 'lorem-ipsum';
 
 type Props = {
   style?: ViewStyle;
@@ -11,9 +12,19 @@ type Props = {
 
 const MessageList = ({ style }: Props) => {
   const generateFakeMessages = (count: number) => {
+    const lorem = new LoremIpsum({
+      sentencesPerParagraph: {
+        max: 8,
+        min: 4,
+      },
+      wordsPerSentence: {
+        max: 16,
+        min: 4,
+      },
+    });
     let dateKey = 1487076708000;
     return Array(count).fill({
-      message: 'AHAHAHAHHAA',
+      message: lorem.generateSentences(5),
       date: dateKey + 5000,
     });
   };
@@ -21,9 +32,9 @@ const MessageList = ({ style }: Props) => {
     <Message message={item} />
   );
 
-  const messages = useSelector(
-    (state: AppState) => state.messagesState.messages,
-  );
+  const messages = generateFakeMessages(15); //useSelector(
+  //   (state: AppState) => state.messagesState.messages,
+  // );
 
   return (
     <FlatList
