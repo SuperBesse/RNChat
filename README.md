@@ -20,6 +20,7 @@
 2. Send random message: 'cmd:lip`
 * Ramdom messages are in error, state is displayed and possibility to try again.
 * vibration on sending and when state of message is updated
+* Message are saved and restored when application is relaunched.
 
 ## Tests
 
