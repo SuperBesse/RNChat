@@ -1,4 +1,7 @@
-import { SAVE_NEW_MESSAGE } from '@/Redux/Actions/MessagesActions';
+import {
+  SAVE_NEW_MESSAGE,
+  CLEAR_ALL_MESSAGES,
+} from '@/Redux/Actions/MessagesActions';
 import type { ActionType } from '@/Types/Actions';
 import type { Message } from '@/Types/Message';
 
@@ -17,6 +20,9 @@ export default function (state = initialState, action: ActionType<Message>) {
         ...state,
         messages: [action.payload, ...state.messages],
       };
+    }
+    case CLEAR_ALL_MESSAGES: {
+      return initialState;
     }
     default: {
       return { ...state };

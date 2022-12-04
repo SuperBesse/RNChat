@@ -21,7 +21,7 @@ const MessageInput = ({}: Props) => {
 
   //get status onf message to display loader and reset text on success
   const isSending = useSelector((state: AppState) => {
-    const isLoading = state.messageState.isLoading;
+    const isLoading = state.messageState.isSending;
     if (isLoading) {
       onChangeText('');
     }
@@ -29,7 +29,7 @@ const MessageInput = ({}: Props) => {
   });
 
   useEffect(() => {
-    if (!isSending) {
+    if (!isSending && textInputRef.current) {
       textInputRef.current.focus();
     }
   }, [isSending]);
@@ -49,6 +49,8 @@ const MessageInput = ({}: Props) => {
         onEndEditing={sendNewMessage}
         editable={!isSending}
         enablesReturnKeyAutomatically
+        autoCorrect={false}
+        autoCapitalize={'none'}
       />
       {isSending && <ActivityIndicator size="small" color="#grey" />}
     </View>

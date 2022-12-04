@@ -7,12 +7,10 @@ import {
 import { Message } from '@/Types/Message';
 
 export default function* receivedMessageSaga() {
-  console.log('receivedMessageSaga');
   yield takeEvery(RECEIVED_NEW_MESSAGE, receivedNewMessage);
 }
 
 function* receivedNewMessage(action: ActionType<Message>) {
-  console.log('receivedNewMessage');
   yield put({
     type: SAVE_NEW_MESSAGE,
     payload: action.payload,

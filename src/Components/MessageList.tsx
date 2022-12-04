@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ViewStyle, ListRenderItem } from 'react-native';
+import { FlatList, ViewStyle, ListRenderItem, StyleSheet } from 'react-native';
 import Message from './Message';
 import { Message as IMessage } from '@/Types/Message';
 import { useSelector } from 'react-redux';
@@ -28,17 +28,18 @@ const MessageList = ({ style }: Props) => {
       date: dateKey + 5000,
     });
   };
+
   const renderItem: ListRenderItem<IMessage> = ({ item }) => (
     <Message message={item} />
   );
 
-  const messages = generateFakeMessages(15); //useSelector(
-  //   (state: AppState) => state.messagesState.messages,
-  // );
+  const messages = useSelector(
+    (state: AppState) => state.messagesState.messages,
+  );
 
   return (
     <FlatList
-      style={{ flex: 1 }}
+      style={[style, styles.list]}
       contentContainerStyle={style}
       data={messages}
       renderItem={renderItem}
@@ -51,6 +52,11 @@ const MessageList = ({ style }: Props) => {
 
 export default MessageList;
 
+const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+  },
+});
 MessageList.defaultProps = {
   style: undefined,
 };

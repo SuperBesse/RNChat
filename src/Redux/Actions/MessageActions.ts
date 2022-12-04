@@ -1,6 +1,6 @@
 export const SEND_MESSAGE_START = 'SEND_MESSAGE_START';
-export const SEND_MESSAGE_SUCCESS = 'SEND_MESSAGE_SUCCESS';
-export const SEND_MESSAGE_FAILURE = 'SEND_MESSAGE_FAILURE';
+export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
+export const ADD_MESSAGE_FAILURE = 'ADD_MESSAGE_FAILURE';
 
 export function sendMessage(message: String) {
   return {

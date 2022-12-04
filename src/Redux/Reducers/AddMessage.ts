@@ -1,19 +1,20 @@
 import {
   SEND_MESSAGE_START,
-  SEND_MESSAGE_SUCCESS,
-  SEND_MESSAGE_FAILURE,
+  ADD_MESSAGE_SUCCESS,
+  ADD_MESSAGE_FAILURE,
 } from '@/Redux/Actions/MessageActions';
 import type { ActionType } from '@/Types/Actions';
 import type { Message } from '@/Types/Message';
+import { CLEAR_ALL_MESSAGES } from '../Actions/MessagesActions';
 
 export type MessageReducer = {
   message?: Message;
-  isLoading: boolean;
+  isSending: boolean;
 };
 
 const initialState: MessageReducer = {
   message: undefined,
-  isLoading: false,
+  isSending: false,
 };
 
 export default function (state = initialState, action: ActionType<Message>) {
@@ -22,22 +23,25 @@ export default function (state = initialState, action: ActionType<Message>) {
       return {
         ...state,
         message: { ...action.payload },
-        isLoading: true,
+        isSending: true,
       };
     }
-    case SEND_MESSAGE_SUCCESS: {
+    case ADD_MESSAGE_SUCCESS: {
       return {
         ...state,
         message: undefined,
-        isLoading: false,
+        isSending: false,
       };
     }
-    case SEND_MESSAGE_FAILURE: {
+    case ADD_MESSAGE_FAILURE: {
       return {
+        ...state,
         message: undefined,
-        isLoading: false,
+        isSending: false,
       };
     }
+    case CLEAR_ALL_MESSAGES:
+      return initialState;
     default: {
       return { ...state };
     }
