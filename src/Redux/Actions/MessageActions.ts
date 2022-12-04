@@ -1,4 +1,4 @@
-import { Message } from "@/Types/Message";
+import { Message } from '@/Types/Message';
 
 export const SEND_MESSAGE_START = 'SEND_MESSAGE_START';
 export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
@@ -11,10 +11,10 @@ export function sendMessage(message: String) {
   };
 }
 
-export function addMessageFail() {
+export function addMessageFail(message: Message) {
   return {
     type: ADD_MESSAGE_FAILURE,
-    payload: {},
+    payload: message,
   };
 }
 

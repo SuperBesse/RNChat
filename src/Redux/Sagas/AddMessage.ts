@@ -26,10 +26,14 @@ const randomTime = () => Math.floor(Math.random() * 400);
 
 const delay = () => new Promise(resolve => setTimeout(resolve, randomTime()));
 
-const randomError = (): Boolean => false; // Math.floor(Math.random() * 100) < 30;
+const randomError = (): Boolean => true; // Math.floor(Math.random() * 100) < 30;
 
 function* addMessage(action: ActionType<string>) {
   yield call(delay);
+  const finalMessage = {
+    content: action.payload,
+    date: Date.now(),
+  } as Message;
   try {
     //TODO: create new saga to manage command action
     if (action.payload.startsWith(CMD)) {
@@ -57,16 +61,12 @@ function* addMessage(action: ActionType<string>) {
       if (error) {
         throw new Error('fake error');
       }
-      const finalMessage = {
-        content: action.payload,
-        date: Date.now(),
-      } as Message;
       yield put(addMessageSuccess(finalMessage));
       yield put(receivedNewMessage(finalMessage));
     }
   } catch (err) {
     yield call(ReactNativeHapticFeedback.trigger, 'notificationError');
-    yield put(addMessageFail());
+    yield put(addMessageFail(finalMessage));
   }
 }
 
