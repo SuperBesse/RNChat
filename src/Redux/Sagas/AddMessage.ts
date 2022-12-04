@@ -2,14 +2,17 @@ import { put, takeEvery, call } from 'redux-saga/effects';
 import type { ActionType } from '@/Types/Actions';
 import {
   SEND_MESSAGE_START,
-  ADD_MESSAGE_SUCCESS,
-  ADD_MESSAGE_FAILURE,
+  addMessageFail,
+  addMessageSuccess,
 } from '@/Redux/Actions/MessageActions';
-import { CLEAR_ALL_MESSAGES } from '@/Redux/Actions/MessagesActions';
-import { receivedNewMessage } from '@/Redux/Actions/MessagesActions';
+import {
+  CLEAR_ALL_MESSAGES,
+  receivedNewMessage,
+} from '@/Redux/Actions/MessagesActions';
 import { Message } from '@/Types/Message';
 import { MessageGenerator } from '@/utils/MessageGenerator';
 import { paragraph } from '@/utils/LoremIpsum';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 const CMD = 'cmd:';
 
@@ -43,10 +46,7 @@ function* addMessage(action: ActionType<string>) {
             content: paragraph(randomSentencesCount()),
             date: Date.now(),
           } as Message;
-          yield put({
-            type: ADD_MESSAGE_SUCCESS,
-            payload: generatedMessage,
-          });
+          yield put(addMessageSuccess(generatedMessage));
           yield put(receivedNewMessage(generatedMessage));
           break;
         default:
@@ -61,15 +61,12 @@ function* addMessage(action: ActionType<string>) {
         content: action.payload,
         date: Date.now(),
       } as Message;
-      yield put({
-        type: ADD_MESSAGE_SUCCESS,
-        payload: finalMessage,
-      });
+      yield put(addMessageSuccess(finalMessage));
       yield put(receivedNewMessage(finalMessage));
     }
   } catch (err) {
-    console.log(err);
-    yield put({ type: ADD_MESSAGE_FAILURE, payload: {} });
+    yield call(ReactNativeHapticFeedback.trigger, 'notificationError');
+    yield put(addMessageFail());
   }
 }
 
