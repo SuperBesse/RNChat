@@ -3,7 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '@/Redux/Reducers/index';
 import createSagaMiddleware from 'redux-saga';
-import { addMessage, receivedMessage } from '@/Redux/Sagas';
+import { addMessage, receivedMessage, resendMessage } from '@/Redux/Sagas';
 
 const persistConfig = {
   key: 'root',
@@ -22,3 +22,4 @@ export { store, persistor };
 
 sagaMiddleware.run(addMessage);
 sagaMiddleware.run(receivedMessage);
+sagaMiddleware.run(resendMessage);

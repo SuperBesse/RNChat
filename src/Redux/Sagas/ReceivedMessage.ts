@@ -5,14 +5,14 @@ import {
   SAVE_NEW_MESSAGE,
 } from '@/Redux/Actions/MessagesActions';
 import { Message } from '@/Types/Message';
-import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import { launchSuccessFeedback } from '@/Services/HapticFeedback';
 
 export default function* receivedMessageSaga() {
   yield takeEvery(RECEIVED_NEW_MESSAGE, receivedNewMessage);
 }
 
 function* receivedNewMessage(action: ActionType<Message>) {
-  yield call(ReactNativeHapticFeedback.trigger, 'notificationSuccess');
+  yield call(launchSuccessFeedback);
   yield put({
     type: SAVE_NEW_MESSAGE,
     payload: action.payload,

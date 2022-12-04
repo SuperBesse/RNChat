@@ -1,8 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import type { Message as IMEssage } from '@/Types/Message';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons/faCircleExclamation';
+import { useDispatch } from 'react-redux';
+import { resendMessage } from '@/Redux/Actions/MessageActions';
 
 type Props = {
   message: IMEssage;
@@ -17,11 +19,22 @@ const Message = ({ message }: Props) => {
     });
   };
 
+  const dispatch = useDispatch();
+
+  const reSendMessage = () => {
+    dispatch(resendMessage(message));
+  };
+
+  const { notSent } = message;
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      disabled={!notSent}
+      onPress={reSendMessage}
+    >
       <View style={styles.dateContainer}>
         <Text style={styles.date}>{formattedDate(message.date)}</Text>
-        {message.notSent && (
+        {notSent && (
           <FontAwesomeIcon
             style={styles.errorIcon}
             icon={faCircleExclamation}
@@ -31,7 +44,7 @@ const Message = ({ message }: Props) => {
       <View style={styles.messageContainer}>
         <Text style={styles.content}>{message.content}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

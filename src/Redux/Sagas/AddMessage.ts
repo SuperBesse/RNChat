@@ -12,7 +12,8 @@ import {
 import { Message } from '@/Types/Message';
 import { MessageGenerator } from '@/utils/MessageGenerator';
 import { paragraph } from '@/utils/LoremIpsum';
-import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import sendMessage from '@/Services/Message';
+import { launchFailureFeedback } from '@/Services/HapticFeedback';
 
 const CMD = 'cmd:';
 
@@ -22,14 +23,7 @@ export default function* addMessageSaga() {
 
 const randomSentencesCount = () => Math.floor(Math.random() * 9 + 2);
 
-const randomTime = () => Math.floor(Math.random() * 400);
-
-const delay = () => new Promise(resolve => setTimeout(resolve, randomTime()));
-
-const randomError = (): Boolean => true; // Math.floor(Math.random() * 100) < 30;
-
-function* addMessage(action: ActionType<string>) {
-  yield call(delay);
+function* addMessage(action: ActionType<string>): any {
   const finalMessage = {
     content: action.payload,
     date: Date.now(),
@@ -57,15 +51,12 @@ function* addMessage(action: ActionType<string>) {
           break;
       }
     } else {
-      const error: Boolean = yield call(randomError);
-      if (error) {
-        throw new Error('fake error');
-      }
+      yield sendMessage(finalMessage);
       yield put(addMessageSuccess(finalMessage));
       yield put(receivedNewMessage(finalMessage));
     }
   } catch (err) {
-    yield call(ReactNativeHapticFeedback.trigger, 'notificationError');
+    yield call(launchFailureFeedback);
     yield put(addMessageFail(finalMessage));
   }
 }
