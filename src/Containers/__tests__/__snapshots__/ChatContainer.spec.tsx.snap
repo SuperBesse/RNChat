@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatContainer should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    getItem={[Function]}
+    getItemCount={[Function]}
+    invertStickyHeaders={true}
+    inverted={true}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    persistentScrollbar={true}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    style={
+      Array [
+        Object {
+          "transform": Array [
+            Object {
+              "scaleY": -1,
+            },
+          ],
+        },
+        Array [
+          undefined,
+          Object {
+            "flex": 1,
+          },
+        ],
+      ]
+    }
+    viewabilityConfigCallbackPairs={Array []}
+  >
+    <View />
+  </RCTScrollView>
+  <View
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <TextInput
+      autoCapitalize="none"
+      autoCorrect={false}
+      editable={true}
+      enablesReturnKeyAutomatically={true}
+      onChangeText={[Function]}
+      onEndEditing={[Function]}
+      placeholder="placeholder.message"
+      style={
+        Object {
+          "alignSelf": "center",
+          "borderColor": "gray",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "marginRight": 8,
+          "marginVertical": 8,
+          "padding": 10,
+          "width": "80%",
+        }
+      }
+      value=""
+    />
+  </View>
+</View>
+`;

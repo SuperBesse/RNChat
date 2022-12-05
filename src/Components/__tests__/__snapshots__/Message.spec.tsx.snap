@@ -1,16 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Message should render correctly 1`] = `
+exports[`Message should render a text in failure state 1`] = `
 <View
+  accessibilityState={
+    Object {
+      "disabled": false,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Object {
       "alignItems": "flex-start",
       "flexDirection": "row",
       "justifyContent": "flex-end",
       "marginVertical": 5,
+      "opacity": 1,
       "paddingHorizontal": 20,
     }
   }
+  testID="testid-1487076708000"
+>
+  <View
+    style={
+      Object {
+        "marginRight": 6,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 10,
+          "marginVertical": 4,
+        }
+      }
+    >
+      13:51
+    </Text>
+    <
+      icon={
+        Object {
+          "icon": Array [
+            512,
+            512,
+            Array [
+              "exclamation-circle",
+            ],
+            "f06a",
+            "M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z",
+          ],
+          "iconName": "circle-exclamation",
+          "prefix": "fas",
+        }
+      }
+      style={
+        Object {
+          "alignSelf": "flex-end",
+          "color": "#FF0000EE",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#4b9cba",
+        "borderBottomLeftRadius": 12,
+        "borderBottomRightRadius": 12,
+        "borderTopLeftRadius": 12,
+        "maxWidth": "60%",
+        "paddingHorizontal": 10,
+        "paddingVertical": 12,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 14,
+        }
+      }
+    >
+      error
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Message should render correctly 1`] = `
+<View
+  accessibilityState={
+    Object {
+      "disabled": true,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "flexDirection": "row",
+      "justifyContent": "flex-end",
+      "marginVertical": 5,
+      "opacity": 1,
+      "paddingHorizontal": 20,
+    }
+  }
+  testID="testid-1487076708000"
 >
   <View
     style={

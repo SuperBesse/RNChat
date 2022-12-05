@@ -11,6 +11,8 @@ exports[`MessageInput should render correctly 1`] = `
   }
 >
   <TextInput
+    autoCapitalize="none"
+    autoCorrect={false}
     editable={true}
     enablesReturnKeyAutomatically={true}
     onChangeText={[Function]}

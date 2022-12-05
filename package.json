@@ -90,7 +90,15 @@
     ],
     "coveragePathIgnorePatterns": [
       "(tests/.*.mock).(jsx?|tsx?)$",
-      "(tsx?).(snap?)$"
+      "(tsx?).(snap?)$",
+      "./src/Config",
+      "./src/Store/Theme",
+      "./src/Theme",
+      "./src/Theme/components",
+      "./src/Theme/themes",
+      "./src/Translations/resources",
+      "./src/Hooks",
+      "./src/Navigators"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [

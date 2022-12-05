@@ -52,7 +52,13 @@ const MessageInput = ({}: Props) => {
         autoCorrect={false}
         autoCapitalize={'none'}
       />
-      {isSending && <ActivityIndicator size="small" color="#grey" />}
+      {isSending && (
+        <ActivityIndicator
+          size="small"
+          color="#grey"
+          testID="activity-sending"
+        />
+      )}
     </View>
   );
 };

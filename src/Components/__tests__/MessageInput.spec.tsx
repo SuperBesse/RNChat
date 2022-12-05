@@ -5,6 +5,8 @@ import * as redux from 'react-redux';
 import { TextInput } from 'react-native';
 import { put, takeEvery } from 'redux-saga/effects';
 import addMessageSaga, { addMessage } from '@/Redux/Sagas/AddMessage';
+import * as Redux from 'react-redux';
+
 //import { expectSaga } from 'redux-saga-test-plan';
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({
@@ -37,7 +39,15 @@ describe('MessageInput', () => {
       screen.UNSAFE_getByType(TextInput).props.onEndEditing();
     });
     expect(mockDispatch).toHaveBeenCalledWith(addMessagePayload);
-    useDispatchSpy.mockClear();
+  });
+
+  it('should update state text when textInput update text value', async () => {
+    render(<MessageInput />).toJSON();
+    expect(screen.UNSAFE_getByType(TextInput).props.value).toEqual('');
+    act(() => {
+      screen.UNSAFE_getByType(TextInput).props.onChangeText('test');
+    });
+    expect(screen.UNSAFE_getByType(TextInput).props.value).toEqual('test');
   });
 
   it('should trigger message saga when message action is send', async () => {
@@ -55,5 +65,12 @@ describe('MessageInput', () => {
     //     payload: { message: 'message test' },
     //   })
     //   .run();
+  });
+
+  it('should render a loader when message is sending', () => {
+    render(<MessageInput />).toJSON();
+    jest.spyOn(Redux, 'useSelector').mockReturnValue(true);
+    screen.rerender(<MessageInput />);
+    expect(screen.getAllByTestId('activity-sending')).not.toBeNull();
   });
 });

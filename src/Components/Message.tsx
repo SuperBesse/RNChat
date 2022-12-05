@@ -28,6 +28,7 @@ const Message = ({ message }: Props) => {
   const { notSent } = message;
   return (
     <TouchableOpacity
+      testID={`testid-${message.date}`}
       style={styles.container}
       disabled={!notSent}
       onPress={reSendMessage}
