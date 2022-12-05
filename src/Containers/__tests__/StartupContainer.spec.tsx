@@ -11,9 +11,19 @@ jest.mock('react-redux', () => ({
 }));
 
 describe('StartupContainer', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('should render correctly', () => {
     const tree = render(<StartupContainer />).toJSON();
     expect(tree).toMatchSnapshot();
+    jest.runAllTimers();
+    jest.runAllTicks();
     expect(screen.UNSAFE_getAllByType(ActivityIndicator).length).toBe(1);
     expect(screen.UNSAFE_getAllByType(Text).length).toBe(1);
   });

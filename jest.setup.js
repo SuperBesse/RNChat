@@ -7,6 +7,5 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
   FontAwesomeIcon: '',
 }));
 
-import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'; // or use require
-
+import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock';
 jest.mock('react-native-device-info', () => mockRNDeviceInfo);
